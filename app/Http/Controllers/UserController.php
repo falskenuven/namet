@@ -41,4 +41,28 @@ class UserController extends Controller
 	{
 		return $request->user()->following->where('id', $request->id)->count();
 	}
+
+	public function find(Request $request)
+    {
+        $findUser= User::where('name', 'LIKE', '%'.$request->get('search').'%')
+        	->whereNotIn('role', [1])
+        	->limit(10)
+        	->get();
+
+        return response()->json($findUser);
+    }
+
+    public function delete(Request $request, $user_id)
+    {
+        $user_f = User::find($user_id);
+        $user = $request->user();
+
+        if($user->id == $user_f->id || $user->role === 1) {
+            $user_f->delete();
+        } else {
+            return 'Permission denied';
+        }
+
+        return response()->json('successfully deleted');
+    }
 }

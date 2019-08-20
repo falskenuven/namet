@@ -5,7 +5,7 @@
             <div class="post" v-for="post in laravelData.data" :key="post.id">
                 <a :href="user.profileLink">{{ user.name }}</a>| {{ post.title}}  | {{ post.createdDate }}
                 <hr/>
-                <div>
+                <div v-if="my_id == user.id">
                     <a :href="'/post/edit/'+ post.id" role="button" class="btn btn-light">Edit</a>
                     <a @click="delPost(post.id)" role="button" class="btn btn-danger">Delete</a>
                 </div>
@@ -27,7 +27,7 @@ export default {
         }
     },
 
-    props: ['user'],
+    props: ['user', 'my_id'],
 
     mounted() {
         this.getResults(1);

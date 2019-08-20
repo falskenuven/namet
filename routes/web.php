@@ -20,11 +20,23 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 // User
-Route::get('users/{user}', 'UserController@show')->name('user.show');
+Route::get('/users/{user}', 'UserController@show')->name('user.show');
+
+Route::post('/user/find', 'UserController@find');
+
+Route::get('/user/delete/{user_id}', 'UserController@delete');
+
+
+//Admin 
+Route::get('/admin', 'AdminController@index');
+
+Route::post('/admin/block', 'AdminController@block');
+
+Route::post('/admin/clear', 'AdminController@clear');
 
 
 // Post
-Route::get('/post/create', 'PostController@show')->name('home')->middleware('auth');
+Route::get('/post/create', 'PostController@show')->name('home')->middleware('auth', 'block');
 
 Route::get('/posts', 'PostController@index')->name('posts.index');
 
@@ -36,14 +48,22 @@ Route::get('/users/follow/{id}', 'UserController@follow');
 
 Route::get('/users/unfollow/{id}', 'UserController@unfollow');
 
-Route::get('/post/edit/{post_id}', 'PostController@edit');
+Route::get('/post/edit/{post_id}', 'PostController@edit')->middleware('block');
 
 Route::post('/post/update', 'PostController@update');
 
-Route::get('/post/delete/{post_id}', 'PostController@delete');
+Route::get('/post/delete/{post_id}', 'PostController@delete')->middleware('block');
+
+Route::post('/post/find', 'PostController@find');
+
 
 // follow
 
 Route::post('/following/list', 'UserController@followingList');
 
 Route::post('/can/follow', 'UserController@canFollow');
+
+
+// Chat
+
+// Route::get('/chat', 'ChatController@index');

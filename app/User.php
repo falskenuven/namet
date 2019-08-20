@@ -44,6 +44,11 @@ class User extends Authenticatable
        return $this->hasMany(Post::class);
     }
 
+    public function chats_adm()
+    {
+       return $this->hasMany(Chat::class, 'user_main');
+    }
+
     public function groups()
     {
        return $this->hasMany(Group::class);

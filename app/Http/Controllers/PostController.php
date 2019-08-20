@@ -74,14 +74,22 @@ class PostController extends Controller
     public function delete(Request $request, $post_id)
     {
         $post = Post::find($post_id);
+        $user = $request->user();
 
-        if($post->user_id == $request->user()->id) {
+        if($post->user_id == $user->id || $user->role === 1) {
             $post->delete();
         } else {
             return 'Permission denied';
         }
 
         return response()->json('successfully deleted');
+    }
+
+    public function find(Request $request)
+    {
+        $findPost = Post::where('title', 'LIKE', '%'.$request->get('search').'%')->with('user')->limit(10)->get();
+
+        return response()->json($findPost);
     }
 
 }

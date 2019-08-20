@@ -8,12 +8,13 @@
 
             <follow-component 
                 :user = "{{$user}}"
-                :my_id = "{{auth::id()}}">
-                </follow-component>
+                :my_id = "{{auth::id()}}"></follow-component>
             <following-component :user="{{$user}}"></following-component>
         </div> 
         <div class="col-md-8">
-            <list-component :user="{{$user}}"></list-component>
+            <list-component 
+            :user="{{$user}}"
+            :my_id = "{{auth::id()}}"></list-component>
         </div>
     </div>
 </div>

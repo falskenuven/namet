@@ -7,6 +7,9 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+import Notifications from 'vue-notification';
+
+Vue.use(Notifications);
 
 /**
  * The following block of code may be used to automatically register your
@@ -19,6 +22,7 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
+Vue.component('pagination', require('laravel-vue-pagination'));
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('form-component', require('./components/post/FormComponent.vue').default);
 Vue.component('list-component', require('./components/post/ListComponent.vue').default);
@@ -26,7 +30,8 @@ Vue.component('fo-list-component', require('./components/post/FoListComponent.vu
 Vue.component('following-component', require('./components/user/FollowingComponent.vue').default);
 Vue.component('follow-component', require('./components/user/FollowComponent.vue').default);
 Vue.component('form-edit-component', require('./components/post/FormEditComponent.vue').default);
-Vue.component('pagination', require('laravel-vue-pagination'));
+Vue.component('admin-index-component', require('./components/admin/IndexComponent.vue').default);
+Vue.component('chat-index-component', require('./components/chat/IndexComponent.vue').default);
 
 
 Vue.filter('cut', function (value) {
