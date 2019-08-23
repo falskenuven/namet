@@ -1,6 +1,7 @@
 <template>
     <div class="col-md-8 posts">
         <p v-if="laravelData.length">No posts</p>
+
         <div>
             <div class="post" v-for="post in laravelData.data" :key="post.id">
                 <a :href="user.profileLink">{{ user.name }}</a>| {{ post.title}}  | {{ post.createdDate }}
@@ -14,6 +15,7 @@
             </div>
         </div>
 
+        
         <pagination :data="laravelData" @pagination-change-page="getResults"></pagination>
 
     </div>
@@ -45,6 +47,7 @@ export default {
         getResults(page) {
             axios.post(`/post/list/${page}`, {id: this.user.id})
                 .then(response => {
+                    console.log('posts', response.data)
                     this.laravelData = response.data;
                 });
         }

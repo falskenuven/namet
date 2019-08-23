@@ -17,6 +17,7 @@ class Block
     {
         $now =  date('Y-m-d');
         $user = $request->user();
+        $date = false;
 
         if($user->disabled != null) {
             $date = $user->disabled;

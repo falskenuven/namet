@@ -36,11 +36,11 @@ Vue.component('chat-index-component', require('./components/chat/IndexComponent.
 
 Vue.filter('cut', function (value) {
   if (!value) return '';
-  length = 140;
+  let length = 140;
   value = value.toString().replace(/<[^>]*>?/gm, '');
-  slice = value.slice(0, length);
-  if(value.length > length) slice+= '...'
-  return slice;
+  let sliceVal = value.slice(0, length);
+  if(value.length > length) sliceVal+= '...'
+  return sliceVal;
 })
 /**
  * Next, we will create a fresh Vue application instance and attach it to
