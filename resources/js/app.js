@@ -11,6 +11,9 @@ import Notifications from 'vue-notification';
 
 Vue.use(Notifications);
 
+import VueNoty from 'vuejs-noty';
+
+Vue.use(VueNoty);
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -38,7 +41,7 @@ Vue.component('read-component', require('./components/post/ReadComponent.vue').d
 
 Vue.filter('cut', function (value) {
   if (!value) return '';
-  let length = 140;
+  let length = 180;
   value = value.toString().replace(/<[^>]*>?/gm, '');
   let sliceVal = value.slice(0, length);
   if(value.length > length) sliceVal+= '...'

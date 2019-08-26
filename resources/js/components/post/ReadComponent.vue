@@ -16,7 +16,7 @@
 export default {
   props: ['post', "my_id"],
   mounted() {
-      console.log(this.post)
+      // console.log(this.post)
   },
   methods: {
     delPost: function(post_id) {
