@@ -1,21 +1,15 @@
 <template>
-    <div class="col-md-8 posts">
+    <div class="posts">
         <p v-if="laravelData.length">No posts</p>
-
         <div>
             <div class="post" v-for="post in laravelData.data" :key="post.id">
-                <a :href="user.profileLink">{{ user.name }}</a>| {{ post.title}}  | {{ post.createdDate }}
+                <a :href="user.profileLink" class="username" >{{ user.name }}</a>| <a :href="'/post/read/'+ post.id" role="button">{{ post.title}} </a>  | {{ post.createdDate }}
                 <hr/>
-                <div v-if="my_id == user.id">
-                    <a :href="'/post/edit/'+ post.id" role="button" class="btn btn-light">Edit</a>
-                    <a @click="delPost(post.id)" role="button" class="btn btn-danger">Delete</a>
-                </div>
                 <!-- <div v-html="post.article"></div> -->
                 <div v-html="$options.filters.cut(post.article)"></div>
             </div>
         </div>
-
-        
+      
         <pagination :data="laravelData" @pagination-change-page="getResults"></pagination>
 
     </div>
@@ -36,18 +30,9 @@ export default {
     },
 
     methods: {
-        delPost: function(post_id) {
-            axios.get(`/post/delete/${post_id}`)
-                .then(res => {
-                    // console.log('deleted');
-                });
-            
-        },
-
         getResults(page) {
             axios.post(`/post/list/${page}`, {id: this.user.id})
                 .then(response => {
-                    console.log('posts', response.data)
                     this.laravelData = response.data;
                 });
         }
@@ -57,10 +42,14 @@ export default {
 </script>
 
 <style>
-    .hidden {
-        background: red;
+    .username {
+        font-size: 2em;
+        color: #15091B;
     }
     .post {
         padding: 10px 0;
+    }
+    .posts {
+        background: #E4CCAF;
     }
 </style>

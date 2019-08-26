@@ -28,10 +28,12 @@ Vue.component('form-component', require('./components/post/FormComponent.vue').d
 Vue.component('list-component', require('./components/post/ListComponent.vue').default);
 Vue.component('fo-list-component', require('./components/post/FoListComponent.vue').default);
 Vue.component('following-component', require('./components/user/FollowingComponent.vue').default);
+Vue.component('followers-component', require('./components/user/FollowersComponent.vue').default);
 Vue.component('follow-component', require('./components/user/FollowComponent.vue').default);
 Vue.component('form-edit-component', require('./components/post/FormEditComponent.vue').default);
 Vue.component('admin-index-component', require('./components/admin/IndexComponent.vue').default);
 Vue.component('chat-index-component', require('./components/chat/IndexComponent.vue').default);
+Vue.component('read-component', require('./components/post/ReadComponent.vue').default);
 
 
 Vue.filter('cut', function (value) {
@@ -47,6 +49,7 @@ Vue.filter('cut', function (value) {
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+Vue.config.productionTip = false;
 
 const app = new Vue({
     el: '#app',

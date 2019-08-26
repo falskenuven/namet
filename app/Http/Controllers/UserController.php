@@ -22,6 +22,12 @@ class UserController extends Controller
 	    return array('res' => False);
 	}
 
+	public function followDis(User $user)
+	{
+	    return view('user.follow', compact('user'));
+	}
+
+
 	public function unFollow(Request $request, $id)
 	{
 	    if($request->user()->canUnFollow($id)) {
@@ -35,6 +41,11 @@ class UserController extends Controller
 	public function followingList(Request $request)
 	{
 		return User::where('id', $request->get('id'))->with('following')->first();
+	}
+
+	public function followersList(Request $request)
+	{
+		return User::where('id', $request->user()->id)->with('followers')->first();
 	}
 
 	public function canFollow(Request $request)

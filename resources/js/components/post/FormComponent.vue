@@ -2,9 +2,7 @@
     <div id="app" class="editor">
         <div class="field">
           <input type="text" v-model="title" placeholder="Title">
-          <vue-editor 
-          v-model="content"
-          :editorOptions="editorSettings"></vue-editor>
+          <vue-editor v-model="content"></vue-editor>
             
         </div>
         <div>
@@ -15,10 +13,7 @@
 </template>
 
 <script>
-import { VueEditor, Quill } from "vue2-editor";
-import { ImageDrop } from 'quill-image-drop-module'
-
-Quill.register('modules/imageDrop', ImageDrop)
+import { VueEditor } from "vue2-editor";
 
 export default {
   components: {
@@ -29,17 +24,12 @@ export default {
     return {
       title: '',
       content: '',
-      editorSettings: {
-          modules: {
-            imageDrop: true,
-          }
-      }
     };
   },
  
   methods: {
     saveContent: function() {
-
+      console.log(this.content);
       axios.post('/post/save', {title: this.title, article: this.content, group_id: null}).then(res => {
         console.log(res.data);
         this.content = '';

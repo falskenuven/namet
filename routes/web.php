@@ -54,6 +54,9 @@ Route::post('/post/update', 'PostController@update');
 
 Route::get('/post/delete/{post_id}', 'PostController@delete')->middleware('block');
 
+Route::get('/post/read/{post_id}', 'PostController@read');
+
+
 Route::post('/post/find', 'PostController@find');
 
 
@@ -61,7 +64,11 @@ Route::post('/post/find', 'PostController@find');
 
 Route::post('/following/list', 'UserController@followingList');
 
+Route::get('/followers/list', 'UserController@followersList');
+
 Route::post('/can/follow', 'UserController@canFollow');
+
+Route::get('/follow', 'UserController@followDis')->name('follow');
 
 
 // Chat

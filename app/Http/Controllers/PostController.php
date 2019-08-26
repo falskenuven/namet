@@ -18,6 +18,12 @@ class PostController extends Controller
         return view('post.index');
     }
 
+    public function read(Request $request, $post_id)
+    {
+        $post = Post::where('id', $post_id)->with('user')->first();
+        return view('post.read')->with('post', $post);
+    }
+
     public function index(Request $request, Post $post)
     {
         $posts = $post->whereIn('user_id', $request->user()->following()
@@ -38,7 +44,7 @@ class PostController extends Controller
             'article' => $request->get('article'),
             'group_id' => $request->get('group_id')
         ]);
-
+        return $request;
         return response()->json(Post::where('id', $newPost->id)->with('user')->get());
     }
 
