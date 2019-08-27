@@ -36,6 +36,8 @@ Route::post('/admin/block', 'AdminController@block');
 
 Route::post('/admin/clear', 'AdminController@clear');
 
+Route::post('/user/make/admin', 'AdminController@makeAdmin');
+
 
 // Post
 Route::get('/post/create', 'PostController@show')->name('home')->middleware('auth', 'block');

@@ -2,7 +2,7 @@
     <div>
         <h2>Find and block User</h2>
         <notifications group="foo" />
-        <input type="text" v-model="name" @input="changeName">
+        <input type="text" v-model="name" @input="changeName" class="form-control">
 
         <div v-for="user in users">
             {{user.id}} | <a :href="user.profileLink">{{user.name}}</a>
@@ -45,14 +45,9 @@
             blockUser(id, disabled) {               
                 axios.post(`/admin/block`, {id: id, time: disabled})
                     .then((res => {
-                        this.$notify({
-                            group: 'foo',
-                            title: 'Important message',
-                            text: 'Successfully blocked'
-                        });
-
                         this.name = '';
                         this.users = {};
+                        this.$noty.success('Success');
                     }));
             },
 
@@ -61,6 +56,7 @@
                     .then((res => {
                         this.name = '';
                         this.users = {};
+                        this.$noty.success('Success');
                     }));
             }
         }

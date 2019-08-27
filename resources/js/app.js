@@ -35,6 +35,7 @@ Vue.component('followers-component', require('./components/user/FollowersCompone
 Vue.component('follow-component', require('./components/user/FollowComponent.vue').default);
 Vue.component('friend-component', require('./components/user/FriendComponent.vue').default);
 Vue.component('rand-post-component', require('./components/user/RandPostComponent.vue').default);
+Vue.component('info-component', require('./components/user/InfoComponent.vue').default);
 Vue.component('form-edit-component', require('./components/post/FormEditComponent.vue').default);
 Vue.component('admin-index-component', require('./components/admin/IndexComponent.vue').default);
 Vue.component('chat-index-component', require('./components/chat/IndexComponent.vue').default);

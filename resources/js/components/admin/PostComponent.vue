@@ -1,7 +1,7 @@
 <template>
     <div>
     	<h2>Find and delete Post</h2>
-        <input type="text" v-model="title" @input="changeTitle">
+        <input type="text" v-model="title" @input="changeTitle" class="form-control">
         <div v-for="post in posts">
         	<div>
         		{{post.id}} | {{post.title}} | {{post.user.name}}
@@ -40,10 +40,10 @@
             delPost(id) {
                 axios.get(`/post/delete/${id}`)
                     .then((res => {
-                        console.log('deleted');
+                        this.$noty.success('Success');
+                        this.title = '';
+                        this.posts = {};
                     }));
-                this.title = '';
-                this.posts = {};
             },
         }
     }

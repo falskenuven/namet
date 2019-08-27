@@ -37,4 +37,13 @@ class AdminController extends Controller
 
         return 'Success';
     }
+
+    public function makeAdmin(Request $request)
+    {
+        $user = User::where('id', '=', $request->get('id'))->first();
+        $user->role = 1;
+        $user->save();
+
+        return 'Success';
+    }
 }

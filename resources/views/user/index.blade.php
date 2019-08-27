@@ -4,8 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-4">
-            {{ $user->name }}
-
+            <info-component :user="{{$user}}"></info-component>
             <follow-component 
                 :user = "{{$user}}"
                 :my_id = "{{auth::id()}}"></follow-component>
