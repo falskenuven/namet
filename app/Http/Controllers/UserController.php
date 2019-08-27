@@ -76,4 +76,9 @@ class UserController extends Controller
 
         return response()->json('successfully deleted');
     }
+
+    public function random(Request $request)
+	{
+		return User::where('id', '!=', $request->user()->id)->inRandomOrder()->take(2)->get();
+	}
 }

@@ -1,5 +1,6 @@
 <template>
-    <div class="col-md-8">
+    <div>
+        <hr />
         <p v-if="!posts.length">No posts</p>
         <div class="media" v-for="post in posts" :key="post.id">
             <img class="mr-3" />
@@ -8,8 +9,8 @@
                     <a :href="post.user.profileLink">
                     {{ post.user.name }}</a> | {{ post.createdDate }}
                 </div>
-                <p>{{ post.title }}</p>
-                <div v-html="post.article"></div>
+                <a :href="'/post/read/'+ post.id">{{ post.title}} </a>
+                <div v-html="$options.filters.cut(post.article)"></div>
             </div>
         </div>
     </div>
@@ -19,15 +20,16 @@
 export default {
     data() {
         return {
-            posts: []
+            posts: [],
         }
     },
     mounted() {
         axios.get('/posts')
-            .then((resp => {
-                this.posts = resp.data;
+            .then((res => {
+                this.posts = res.data;
             }));
-    }
+
+    },
 
 }
 </script>

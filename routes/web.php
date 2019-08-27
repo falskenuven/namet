@@ -26,8 +26,10 @@ Route::post('/user/find', 'UserController@find');
 
 Route::get('/user/delete/{user_id}', 'UserController@delete');
 
+Route::get('/user/random', 'UserController@random');
 
-//Admin 
+
+// Admin 
 Route::get('/admin', 'AdminController@index');
 
 Route::post('/admin/block', 'AdminController@block');
@@ -56,8 +58,9 @@ Route::get('/post/delete/{post_id}', 'PostController@delete')->middleware('block
 
 Route::get('/post/read/{post_id}', 'PostController@read');
 
-
 Route::post('/post/find', 'PostController@find');
+
+Route::get('/post/random', 'PostController@random');
 
 
 // follow

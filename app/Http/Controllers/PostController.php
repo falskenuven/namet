@@ -98,4 +98,10 @@ class PostController extends Controller
         return response()->json($findPost);
     }
 
+    public function random(Request $request)
+    {
+        // return Post::all()->random(2);
+        return Post::where('user_id', '!=', $request->user()->id)->inRandomOrder()->with('user')->take(3)->get();
+
+    }
 }
