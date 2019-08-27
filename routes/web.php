@@ -28,6 +28,8 @@ Route::get('/user/delete/{user_id}', 'UserController@delete');
 
 Route::get('/user/random', 'UserController@random');
 
+Route::get('/settings', 'UserController@settings');
+
 
 // Admin 
 Route::get('/admin', 'AdminController@index');
@@ -79,3 +81,8 @@ Route::get('/follow', 'UserController@followDis')->name('follow');
 // Chat
 
 // Route::get('/chat', 'ChatController@index');
+
+
+// Upload
+
+Route::post('/formSubmit','UserController@formSubmit');

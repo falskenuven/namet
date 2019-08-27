@@ -1,6 +1,8 @@
 <template>
     <div>
         <h2>{{user.name}}</h2>
+        <img :src="`/upload/${user.avatar}`">
+        <div>{{user.bio}}</div>
         <div v-if="isBlock">Your account is unavailable until  {{user.disabled}}</div>
     </div>
 </template>

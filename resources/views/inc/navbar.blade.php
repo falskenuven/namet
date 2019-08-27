@@ -34,6 +34,7 @@
                             <a class="dropdown-item" href="{{ route('user.show', Auth::user()->name) }}">{{Auth::user()->name}}</a>
                             <a class="dropdown-item" href="/post/create">Create Post</a>
                             <a class="dropdown-item" href="/home">Home</a>
+                            <a class="dropdown-item" href="/settings">Settings</a>
                             <a class="dropdown-item" href="/follow">Follow</a>
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();

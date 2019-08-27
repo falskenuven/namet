@@ -3,10 +3,10 @@
         <p v-if="laravelData.length">No posts</p>
         <div>
             <div class="post" v-for="post in laravelData.data" :key="post.id">
-                <a :href="user.profileLink" class="username" >{{ user.name }}</a>| <a :href="'/post/read/'+ post.id" role="button">{{ post.title}} </a>  | {{ post.createdDate }}
+                <a :href="user.profileLink" class="username" >{{ user.name }}</a>| <a :href="'/post/read/'+ post.id" class="title">{{ post.userntitle}} </a>  | <span>{{ post.createdDate }}</span>
                 <hr/>
                 <!-- <div v-html="post.article"></div> -->
-                <div v-html="$options.filters.cut(post.article)"></div>
+                <div class="text" v-html="$options.filters.cut(post.article)"></div>
             </div>
         </div>
       
@@ -43,13 +43,20 @@ export default {
 
 <style>
     .username {
-        font-size: 2em;
-        color: #15091B;
+        padding: 5px;
+        font-size: 1.8em;
+        color: #39004d;
     }
     .post {
-        padding: 10px 0;
+        font-size: 1em;
+        color: #260d26;
+        padding: 20px 0;
+        border: 20px solid red;
     }
     .posts {
-        background: #E4CCAF;
+        background: #white;
+    }
+    .posts span {
+        color: black;
     }
 </style>

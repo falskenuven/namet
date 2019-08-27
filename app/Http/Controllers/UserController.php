@@ -12,6 +12,11 @@ class UserController extends Controller
         return view('user.index', compact('user'));
     }
 
+    public function settings()
+    {
+        return view('user.settings');
+    }
+
 	public function follow(Request $request, $id)
 	{
 		if($request->user()->canFollow($id)) {
@@ -81,4 +86,17 @@ class UserController extends Controller
 	{
 		return User::where('id', '!=', $request->user()->id)->inRandomOrder()->take(2)->get();
 	}
+
+	public function formSubmit(Request $request)
+    {
+        $fileName = time().'.'.$request->file->getClientOriginalExtension();
+        $request->file->move(public_path('upload'), $fileName);
+              
+        $user = User::find($request->user()->id);
+        $user->avatar = $fileName;
+        $user->save();
+        
+        return response()->json(['success'=>'You have successfully upload file.', 'fileName' => $fileName]);
+    }
+
 }

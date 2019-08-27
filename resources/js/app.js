@@ -14,6 +14,7 @@ Vue.use(Notifications);
 import VueNoty from 'vuejs-noty';
 
 Vue.use(VueNoty);
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -36,6 +37,7 @@ Vue.component('follow-component', require('./components/user/FollowComponent.vue
 Vue.component('friend-component', require('./components/user/FriendComponent.vue').default);
 Vue.component('rand-post-component', require('./components/user/RandPostComponent.vue').default);
 Vue.component('info-component', require('./components/user/InfoComponent.vue').default);
+Vue.component('settings-component', require('./components/user/SettingsComponent.vue').default);
 Vue.component('form-edit-component', require('./components/post/FormEditComponent.vue').default);
 Vue.component('admin-index-component', require('./components/admin/IndexComponent.vue').default);
 Vue.component('chat-index-component', require('./components/chat/IndexComponent.vue').default);
