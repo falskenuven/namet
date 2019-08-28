@@ -2679,6 +2679,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -2710,6 +2713,16 @@ __webpack_require__.r(__webpack_exports__);
         _this2.$noty.success('Your profile has been updated');
 
         _this2.role = 2;
+      });
+    },
+    deleteUser: function deleteUser() {
+      var _this3 = this;
+
+      console.log('delete user', this.user.id);
+      axios.get("/user/delete/".concat(this.user.id)).then(function (res) {
+        window.location.replace('/login');
+
+        _this3.$noty.success('Success');
       });
     }
   }
@@ -55120,7 +55133,19 @@ var render = function() {
               [_vm._v("refuse to be the admin")]
             )
           ])
-        : _vm._e()
+        : _vm._e(),
+      _vm._v(" "),
+      _c("div", [
+        _c(
+          "a",
+          {
+            staticClass: "btn btn-danger",
+            attrs: { role: "button" },
+            on: { click: _vm.deleteUser }
+          },
+          [_vm._v("Delete Profile")]
+        )
+      ])
     ],
     1
   )

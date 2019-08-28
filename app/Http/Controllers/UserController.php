@@ -72,8 +72,13 @@ class UserController extends Controller
     {
         $user_f = User::find($user_id);
         $user = $request->user();
+        $ava = $user_f->avatar;
 
         if($user->id == $user_f->id || $user->role === 1) {
+        	$image_path = public_path()."/upload/".$ava;
+	        if(file_exists($image_path) && $ava != 'user.png') {
+	        	unlink($image_path);
+	        }
             $user_f->delete();
         } else {
             return 'Permission denied';

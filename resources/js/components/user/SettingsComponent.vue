@@ -8,6 +8,9 @@
         <div v-if="role == 1">
             <a class="btn btn-primary" role="button" @click="refuse">refuse to be the admin</a>
         </div>
+        <div>
+            <a class="btn btn-danger" role="button" @click="deleteUser">Delete Profile</a>
+        </div>
     </div>
 </template>
 
@@ -47,8 +50,18 @@
                        this.$noty.success('Your profile has been updated');
                        this.role = 2;
                 });
+            },
+
+            deleteUser() {
+                console.log('delete user', this.user.id);
+                axios.get(`/user/delete/${this.user.id}`)
+                    .then((res => {
+                        window.location.replace('/login');
+                        this.$noty.success('Success');
+                    }));
             }
-        }
+        },
+
 
     }
 </script>
