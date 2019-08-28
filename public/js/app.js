@@ -2762,10 +2762,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  mounted: function mounted() {
-    console.log('Component mounted.');
-  },
   data: function data() {
     return {
       file: '',
@@ -2774,7 +2772,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     onFileChange: function onFileChange(e) {
-      console.log(e.target.files[0]);
+      //console.log(e.target.files[0]);
       this.file = e.target.files[0];
     },
     formSubmit: function formSubmit(e) {
@@ -2792,6 +2790,7 @@ __webpack_require__.r(__webpack_exports__);
         currentObj.success = response.data.success;
       })["catch"](function (error) {
         currentObj.output = error;
+        currentObj.$noty.warning('Payload Too Large');
       });
     }
   }
@@ -55190,6 +55189,8 @@ var render = function() {
                     _vm._v(
                       "\n                      " +
                         _vm._s(_vm.success) +
+                        "\n                      " +
+                        _vm._s(_vm.error) +
                         "\n                    "
                     )
                   ]

@@ -8,6 +8,7 @@
                     <div class="card-body">
                         <div v-if="success != ''" class="alert alert-success" role="alert">
                           {{success}}
+                          {{error}}
                         </div>
                         <form @submit="formSubmit" enctype="multipart/form-data">
                         <input type="file" class="form-control" v-on:change="onFileChange">
@@ -23,9 +24,6 @@
    
 <script>
     export default {
-        mounted() {
-            console.log('Component mounted.')
-        },
         data() {
             return {
               file: '',
@@ -34,7 +32,7 @@
         },
         methods: {
             onFileChange(e){
-                console.log(e.target.files[0]);
+                //console.log(e.target.files[0]);
                 this.file = e.target.files[0];
             },
             formSubmit(e) {
@@ -56,6 +54,7 @@
                 })
                 .catch(function (error) {
                     currentObj.output = error;
+                    currentObj.$noty.warning('Payload Too Large');
                 });
             }
         }
