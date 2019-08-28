@@ -28,7 +28,12 @@ Route::get('/user/delete/{user_id}', 'UserController@delete');
 
 Route::get('/user/random', 'UserController@random');
 
+// Settings
 Route::get('/settings', 'UserController@settings');
+
+Route::post('/settings/update', 'UserController@settingsUpdate');
+
+Route::get('/settings/refuse', 'UserController@settingsRefuse');
 
 
 // Admin 
@@ -86,3 +91,6 @@ Route::get('/follow', 'UserController@followDis')->name('follow');
 // Upload
 
 Route::post('/formSubmit','UserController@formSubmit');
+
+Route::post('/remove/file','UserController@removeFile');
+

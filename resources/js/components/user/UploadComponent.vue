@@ -50,7 +50,9 @@
    
                 axios.post('/formSubmit', formData, config)
                 .then(function (response) {
+                    let file =  response.data.fileName;
                     currentObj.success = response.data.success;
+
                 })
                 .catch(function (error) {
                     currentObj.output = error;

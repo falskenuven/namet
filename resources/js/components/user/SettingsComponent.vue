@@ -1,8 +1,13 @@
 <template>
     <div>
         <h2>{{user.name}}</h2>
-        <div>{{user.bio}}</div>
+        <textarea v-model="user.bio" class="form-control" placeholder="bio..."></textarea>
+        <input type="text" class="form-control" placeholder="location..." v-model="user.location">
+        <a role="button" class="btn btn-primary" @click="update">Update</a>
         <upload-component></upload-component>
+        <div v-if="role == 1">
+            <a class="btn btn-primary" role="button" @click="refuse">refuse to be the admin</a>
+        </div>
     </div>
 </template>
 
@@ -12,22 +17,44 @@
     export default {
         data() {
             return {
+                role: 2
             }
         },
 
         props: ['user'],
 
-        mounted() {
-           
-            // axios.post('/user/info', this.user)
-            //     .then(res => {
-            //        console.log('info', res.sata);
-            // })
-        },
-
         components: {
             UploadComponent
+        },
+
+        mounted() {
+            this.role =this.user.role;
+        },
+
+        methods: {
+            update() {
+                // console.log('save', this.user);
+                axios.post('/settings/update', this.user)
+                    .then(res => {
+                       this.$noty.success('Your profile has been updated');
+                });
+            },
+
+            refuse() {
+                console.log('refuse');
+                axios.get('/settings/refuse')
+                    .then(res => {
+                       this.$noty.success('Your profile has been updated');
+                       this.role = 2;
+                });
+            }
         }
 
     }
 </script>
+
+<style>
+    textarea {
+        resize: none;
+    }
+</style>

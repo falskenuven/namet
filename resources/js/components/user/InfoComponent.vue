@@ -2,7 +2,8 @@
     <div>
         <h2>{{user.name}}</h2>
         <img :src="`/upload/${user.avatar}`">
-        <div>{{user.bio}}</div>
+        <div>Bio: {{user.bio}}</div>
+        <div>Location: {{user.location}}</div>
         <div v-if="isBlock">Your account is unavailable until  {{user.disabled}}</div>
     </div>
 </template>
@@ -16,14 +17,7 @@
 
         props: ['user'],
 
-        mounted() {
-           
-            // axios.post('/user/info', this.user)
-            //     .then(res => {
-            //        console.log('info', res.sata);
-            // })
-        },
-         computed: {
+        computed: {
             isBlock: function () {
                 let today = new Date();
                 let dd = today.getDate();

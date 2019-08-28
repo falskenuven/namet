@@ -91,12 +91,45 @@ class UserController extends Controller
     {
         $fileName = time().'.'.$request->file->getClientOriginalExtension();
         $request->file->move(public_path('upload'), $fileName);
-              
+             
+        $ava = $request->user()->avatar;
+
         $user = User::find($request->user()->id);
         $user->avatar = $fileName;
         $user->save();
-        
+
+        $image_path = public_path()."/upload/".$ava;
+        if(file_exists($image_path) && $ava != 'user.png') {
+        	unlink($image_path);
+        }
+
         return response()->json(['success'=>'You have successfully upload file.', 'fileName' => $fileName]);
     }
 
+    public function removeFile(Request $request)
+	{
+		$image_path = public_path()."/upload/".$request->get('file');
+        if(file_exists($image_path)) {
+        	unlink($image_path);
+        }
+
+		return $image_path;
+	}
+
+	public function settingsUpdate(Request $request)
+    {
+    	$user = User::find($request->user()->id);
+    	$user->bio = $request->get('bio');
+    	$user->location = $request->get('location');
+    	$user->save();
+        return 'Success';
+    }
+
+    public function settingsRefuse(Request $request)
+    {
+    	$user = User::find($request->user()->id);
+    	$user->role = 2;
+    	$user->save();
+        return 'Success';
+    }
 }
