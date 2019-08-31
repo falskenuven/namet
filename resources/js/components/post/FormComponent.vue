@@ -1,13 +1,13 @@
 <template>
     <div id="app" class="editor">
         <div class="field">
-          <input type="text" v-model="title" placeholder="Title" class="form-control">
-          <div class="error" v-if="isTitle">Error. The title is required</div>
+          <input type="text" v-model="title" placeholder="Title" class="form-control titl">
+          <div class="error" v-if="isTitle">Будь ласка, введіть назву!</div>
           <vue-editor v-model="content"></vue-editor>
-          <div class="error" v-if="isContent">Error. The field is required</div>
+          <div class="error" v-if="isContent">Помилка</div>
         </div>
         <div>
-            <button class="btn btn-success" @click="saveContent">Save</button>
+            <button class="btn btn-save" @click="saveContent">Зберегти</button>
         </div>
     </div>
 
@@ -50,10 +50,10 @@ export default {
           // console.log(res.data);
           this.content = '';
           this.title = '';
-          this.$noty.success('Your post has been saved');
+          this.$noty.success('Твір збережено');
         }).catch(e => {
           // console.log(e);
-          this.$noty.warning('Payload Too Large');
+          this.$noty.warning('Перегружено! Забагато інформації');
         });
       }
     }
@@ -62,17 +62,34 @@ export default {
 </script>
 
 <style>
-    .editor {
-        display: flex;
-        justify-content: space-between;
-    }
-    .field {
-        max-width: 70vw;
-    }
-    img {
-      max-width: 90%;
-    }
-    .error {
-      color: red;
-    }
+  .btn-save {
+    background: #153338;
+    color: #dfe9eb;
+    border: 1px solid #dfe9eb;
+
+  }
+  .titl {
+    background: #5f6e70;
+    border: 1px solid #17282b;
+  } 
+  .titl::placeholder {
+    color:#1f2121;
+  }
+  .titl:focus {
+    background: #5f6e70;
+    color:#1f2121;
+  }
+  .editor {
+    display: flex;
+    justify-content: space-between;
+  }
+  .field {
+    max-width: 70vw;
+  }
+  img {
+    max-width: 90%;
+  }
+  .error {
+    color:#152d30;
+  }
 </style>

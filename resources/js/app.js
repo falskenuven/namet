@@ -34,6 +34,7 @@ Vue.component('fo-list-component', require('./components/post/FoListComponent.vu
 Vue.component('following-component', require('./components/user/FollowingComponent.vue').default);
 Vue.component('followers-component', require('./components/user/FollowersComponent.vue').default);
 Vue.component('follow-component', require('./components/user/FollowComponent.vue').default);
+Vue.component('new-text-component', require('./components/user/NewTextComponent.vue').default);
 Vue.component('friend-component', require('./components/user/FriendComponent.vue').default);
 Vue.component('rand-post-component', require('./components/user/RandPostComponent.vue').default);
 Vue.component('info-component', require('./components/user/InfoComponent.vue').default);
@@ -45,21 +46,23 @@ Vue.component('read-component', require('./components/post/ReadComponent.vue').d
 
 Vue.filter('cut', function (value) {
   if (!value) return '';
-  let length = 180;
-  let value2 = value.toString().replace(/<[^>]*>?/gm, '');
+  let length = 1000;
+  let val = value.toString();
 
-  let sliceVal = value2.slice(0, length);
-  if(value2.length > length) sliceVal+= '...'
-  return sliceVal;
+  let sliceVal = val.slice(0, length);
+  if(val.length > length) {
+  	sliceVal += '...';
+  }
+  return  sliceVal;
 })
 
 Vue.filter('shortCut', function (value) {
   if (!value) return '';
-  let length = 50;
+  let length = 60;
   let value2 = value.toString().replace(/<[^>]*>?/gm, '');
 
   let sliceVal = value2.slice(0, length);
-  if(value2.length > length) sliceVal+= '...'
+  if(value2.length > length) sliceVal += '...';
   return sliceVal;
 })
 /**
@@ -67,7 +70,6 @@ Vue.filter('shortCut', function (value) {
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-Vue.config.productionTip = false;
 
 const app = new Vue({
     el: '#app',

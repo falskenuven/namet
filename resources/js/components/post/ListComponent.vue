@@ -3,10 +3,13 @@
         <p v-if="laravelData.length">No posts</p>
         <div>
             <div class="post" v-for="post in laravelData.data" :key="post.id">
-                <a :href="user.profileLink" class="username" >{{ user.name }}</a>| <a :href="'/post/read/'+ post.id" class="title">{{ post.userntitle}} </a>  | <span>{{ post.createdDate }}</span>
-                <hr/>
+                <a :href="'/post/read/'+ post.id" class="title">{{ post.title}} </a>  
                 <!-- <div v-html="post.article"></div> -->
                 <div class="text" v-html="$options.filters.cut(post.article)"></div>
+                <div class="center">
+                    <a :href="user.profileLink" class="username" >{{ user.name }}</a>
+                    <span>{{ post.createdDate }}</span>
+                </div>
             </div>
         </div>
       
@@ -44,19 +47,42 @@ export default {
 <style>
     .username {
         padding: 5px;
-        font-size: 1.8em;
+        font-size: 1.2em;
         color: #39004d;
+        
+    }
+    .title {
+        font-size: 2em;
+        font-family: fantasy;
+        font-weight: bold;
+        border-bottom: 5px solid #085F06;
+        color: #085F06;
     }
     .post {
-        font-size: 1em;
-        color: #260d26;
-        padding: 20px 0;
-        border: 20px solid red;
+        font-size: 0.8em;
+        color: #000A13;
+        border-top: 1px grooved #06335F; 
+        padding: 10px;
+        margin-bottom: 20px;
+        background: #AECCFA;
+        border: 2px solid #06333b;
+        border-radius: 5px;
+    }
+    .center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
     .posts {
-        background: #white;
+        padding-left: 20px;
     }
     .posts span {
         color: black;
+        
+    }
+    .text{
+        font-size: 1.5em;
+        background: #AECCFA;
+
     }
 </style>

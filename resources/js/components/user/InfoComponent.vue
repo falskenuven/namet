@@ -1,9 +1,9 @@
 <template>
     <div>
-        <h2>{{user.name}}</h2>
+        <h2 class="firstname">{{user.name}}</h2>
         <img :src="`/upload/${user.avatar}`">
-        <div>Bio: {{user.bio}}</div>
-        <div>Location: {{user.location}}</div>
+        <div v-if="user.bio" class="bio">Особисте <span>{{user.bio}}</span></div>
+        <div v-if="user.location" class="location">Моя країна {{user.location}}</div>
         <div v-if="isBlock">Your account is unavailable until  {{user.disabled}}</div>
     </div>
 </template>
@@ -37,3 +37,20 @@
 
     }
 </script>
+
+<style>
+
+.bio{background: #D5F3F4;
+
+}
+    
+.location{
+    border-bottom: 1px solid #80deed;
+}
+.firstname{
+    font-size: 3em;
+    font-family: times new roman;
+
+}
+
+</style>

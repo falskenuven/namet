@@ -2,7 +2,9 @@
     <div>
         <h3>Some interesting Users</h3>
         <div v-for="user in users">
-            <a :href="user.profileLink">{{user.name}}</a>
+            <div>
+                <a :href="user.profileLink">{{user.name}}</a>
+            </div>
             <img :src="`/upload/${user.avatar}`">
         </div>
     </div>

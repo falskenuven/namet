@@ -3,8 +3,9 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-4 blok">
             <info-component :user="{{$user}}"></info-component>
+            <new-text-component></new-text-component>
             <follow-component 
                 :user = "{{$user}}"
                 :my_id = "{{auth::id()}}"></follow-component>

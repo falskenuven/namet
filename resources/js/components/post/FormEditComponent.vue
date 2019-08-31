@@ -1,10 +1,10 @@
 <template>
     <div id="app" class="editor">
         <div class="field">
-          <input type="text" v-model="title" placeholder="Title" class="form-control">
-          <div class="error" v-if="isTitle">Error. The title is required</div>
+          <input type="text" v-model="title" placeholder="Title" class="form-control titl">
+          <div class="error" v-if="isTitle">Вибачте, заголовок обов'язковий!</div>
           <vue-editor v-model="content"></vue-editor>
-          <div class="error" v-if="isContent">Error. The field is required</div>
+          <div class="error" v-if="isContent">Вибачте, заголовок обов'язковий!</div>
         </div>
         <div>
             <button @click="update">Update</button>
@@ -49,10 +49,10 @@ export default {
       if(this.isTitle == false && this.isContent == false) {
         axios.post('/post/update', {post_id: this.post.id, title: this.title, article: this.content, group_id: null}).then(res => {
           // console.log(res.data);
-          this.$noty.success('Your post has been edited');
+          this.$noty.success('Твір відредаговано!');
         }).catch(e => {
           // console.log(e);
-          this.$noty.warning('Payload Too Large');
+          this.$noty.warning('Перегружено! (приберіть картинку)');
         });
       }
     }

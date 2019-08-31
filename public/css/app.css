@@ -1,5 +1,42 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
 
+#line {
+  background: black !important;
+  padding: 0 !important;
+  border-bottom: 5px solid #05252A;
+}
+
+a.namet {
+  color: white !important;
+  font-size: 2em !important;
+  text-shadow: 5px 2px 10px white;
+}
+
+.logo {
+  background-image: url("/image/namet.png");
+  background-size: contain;
+  width: 70px;
+  height: 70px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.menuName {
+  color: white !important;
+  background: #085F6D;
+  border: 6px solid #05252A;
+}
+
+.blok {
+  background: #AECCFA;
+  border: 1px outset black;
+  border-radius: 5px;
+}
+
+.quillWrapper {
+  background: #afbbbd;
+}
+
 /*!
  * Bootstrap v4.3.1 (https://getbootstrap.com/)
  * Copyright 2011-2019 The Bootstrap Authors
@@ -72,7 +109,7 @@ body {
   line-height: 1.6;
   color: #212529;
   text-align: left;
-  background-color: #e6ffff;
+  background-color: #085f6d;
 }
 
 [tabindex="-1"]:focus {
@@ -517,7 +554,7 @@ mark,
 
 .img-thumbnail {
   padding: 0.25rem;
-  background-color: #e6ffff;
+  background-color: #085f6d;
   border: 1px solid #dee2e6;
   border-radius: 0.25rem;
   max-width: 100%;
@@ -4097,15 +4134,15 @@ input[type=button].btn-block {
 }
 
 .custom-range:focus::-webkit-slider-thumb {
-  box-shadow: 0 0 0 1px #e6ffff, 0 0 0 0.2rem rgba(52, 144, 220, 0.25);
+  box-shadow: 0 0 0 1px #085f6d, 0 0 0 0.2rem rgba(52, 144, 220, 0.25);
 }
 
 .custom-range:focus::-moz-range-thumb {
-  box-shadow: 0 0 0 1px #e6ffff, 0 0 0 0.2rem rgba(52, 144, 220, 0.25);
+  box-shadow: 0 0 0 1px #085f6d, 0 0 0 0.2rem rgba(52, 144, 220, 0.25);
 }
 
 .custom-range:focus::-ms-thumb {
-  box-shadow: 0 0 0 1px #e6ffff, 0 0 0 0.2rem rgba(52, 144, 220, 0.25);
+  box-shadow: 0 0 0 1px #085f6d, 0 0 0 0.2rem rgba(52, 144, 220, 0.25);
 }
 
 .custom-range::-moz-focus-outer {
@@ -4305,8 +4342,8 @@ input[type=button].btn-block {
 .nav-tabs .nav-link.active,
 .nav-tabs .nav-item.show .nav-link {
   color: #495057;
-  background-color: #e6ffff;
-  border-color: #dee2e6 #dee2e6 #e6ffff;
+  background-color: #085f6d;
+  border-color: #dee2e6 #dee2e6 #085f6d;
 }
 
 .nav-tabs .dropdown-menu {

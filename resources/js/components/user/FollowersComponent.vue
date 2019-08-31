@@ -2,7 +2,6 @@
     <div class="container">
         <p v-if="!followers.length">No Followers</p>
         <div class="media" v-for="user in followers" :key="user.id">
-            <img class="mr-3" />
             <div class="media-body">
                 <hr/>
                 <div class="mt-3">
